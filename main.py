@@ -53,13 +53,6 @@ def takecommand():
     return query
 
 
-def sendEmail(to, content):
-    server = smtplib.SMTP("smtp.gmail.com", 587)
-    server.ehlo()
-    server.starttls()
-    server.login('gamer280904@gmail.com', 'Sept@2004')
-    server.sendmail('gamer280904@gmail.com', to, content)
-    server.close()
 
 
 if __name__ == '__main__':
@@ -84,12 +77,10 @@ if __name__ == '__main__':
             webbrowser.open("google.com")
 
         elif "open my channel" in query:
-            webbrowser.open("https://www.youtube.com/channel/UC2_de31Ol2C1cepoKIz0gdg")
+            webbrowser.open("https://www.youtube.com/channel/UC2_de31Ol2C1cepoKIz0gdg?view_as=subscriber")
 
         elif 'play music' in query:
-            music_dir = "D:\\Songsy"
-            songs = os.listdir(music_dir)
-            os.startfile(os.path.join(music_dir, songs[0]))
+            webbrowser.open("https://www.youtube.com/watch?v=fB8TyLTD7EE")
 
         elif "date" in query:
             strDate = datetime.datetime.now().date()
@@ -108,20 +99,9 @@ if __name__ == '__main__':
             speak("I am EDITH,a software designed by Tony Stark.My full name is Even Dead I am The Hero ")
 
         elif "open code" in query:
-            codepath = "C:\Program Files\JetBrains\PyCharm Community Edition 2019.2.1\bin\pycharm64.exe"
-            os.startfile(codepath)
+            webbrowser.open("https://github.com/DeeponHalder")
 
         elif "exit" in query:
             speak("Goodbye")
             break
 
-        elif "send email" in query:
-            try:
-                speak("What should I say?")
-                content = takecommand()
-                to = "subratah2004@yahoo.co.in"
-                sendEmail(to, content)
-                speak("Email has been sent")
-            except Exception as e:
-                print(e)
-                speak(f"Sorry bhai...Could not send email")
